@@ -6,7 +6,6 @@ using NaughtyAttributes;
 public class MissionType : ScriptableObject
 {
     public string Name;
-    public int MissionLevel;
     public List<MissionResources> Cost;
     public List<MissionResources> Rewards;
 
@@ -17,15 +16,15 @@ public class MissionType : ScriptableObject
         MissionResources cost = Cost.RandomElement();
         MissionResources reward = Rewards.RandomElement();
 
-        int costAmount      = Random.Range( 0, 11 + missionLevel) * 5;
-        int rewardAmount    = Random.Range( 0, 11 + missionLevel) * 5;
+        int costAmount      = Random.Range( 1, 11 + missionLevel) * 5;
+        int rewardAmount    = Random.Range( 1, 1 + (costAmount / 5)) * 5;
 
         ResourceAmount resourceCost     = new ResourceAmount( cost, costAmount);
         ResourceAmount resourceReward   = new ResourceAmount( reward, rewardAmount);
 
-        int manpowerReq = 5 + costAmount / 5;
+        int manpowerReq = 5 + costAmount / 2;
 
-        int turnCost = (int)Mathf.Ceil(manpowerReq / 2);
+        int turnCost = 1 + (int)Mathf.Ceil(manpowerReq / 10);
 
         int turnDuration = Random.Range( 1, 3);
         

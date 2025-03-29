@@ -6,7 +6,12 @@ public static class IListExtensions
 {
     public static T RandomElement<T>(this IList<T> ts)
     {
-        Random rand = new Random();
-        return ts[rand.Next(ts.Count)];
+        if (ts.Count > 0)
+        {
+            Random rand = new Random();
+            return ts[rand.Next(ts.Count)];
+        }
+        else
+            return default;
     }
 }
