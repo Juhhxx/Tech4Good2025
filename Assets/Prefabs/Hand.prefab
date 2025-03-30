@@ -63,7 +63,7 @@ MonoBehaviour:
   moveSpeed: 1
   maxDistance: 9
   holdTime: 3
-  newSprite: {fileID: 21300000, guid: f446006251593624596ab1fb4f678fd6, type: 3}
+  newSprite: {fileID: 2100000, guid: f2eff7a9fb005f7459b41dee95bbe8ae, type: 2}
 --- !u!114 &4128335281191042109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 4d5eafe52bec1d54db9e05b2caf48dc6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
