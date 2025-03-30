@@ -31,7 +31,7 @@ public class MissionType : ScriptableObject
 
         int turnDuration = Random.Range( 1, 5);
 
-        string text = Texts[missionLevel];
+        string text = Texts[missionLevel - 1];
         
         return new Missions( Name, manpowerReq, resourceCost, resourceReward, turnCost, turnDuration, text);
     }
