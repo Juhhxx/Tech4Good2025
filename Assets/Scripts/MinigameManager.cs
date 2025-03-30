@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class MinigameManager : MonoBehaviour
     public bool IsPLaying => _isPLaying;
     private float _timeElapsed;
     private float _timeLeft;
+    public Queue<Missions> GamesQueue;
     [SerializeField] private float _timeLimit = 15;
 
     private void Update()
@@ -27,8 +29,11 @@ public class MinigameManager : MonoBehaviour
             }
         }
     }
-    public void StartMinigame(Missions m)
+    public void StartMinigames()
     {
+        Missions m = GamesQueue.Dequeue();
+        _timeElapsed = 0;
+
         CameraSwitch.SwitchToCamera(CameraModes.Minigames);
         _mission = m;
         _minigame = m.Minigame;

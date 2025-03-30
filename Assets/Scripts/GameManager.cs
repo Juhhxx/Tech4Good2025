@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
                                                                 global :: Resources.Medicine,
                                                                 global :: Resources.Water};
     private MinigameManager _minigames;
+    private Queue<Missions> _minigamesToDo;
     private bool _inTurn = false;
 
     private void Start()
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         _activeMissions     = new List<Missions>();
         _prefabDeleteList   = new List<GameObject>();
         _resources          = new Dictionary<Resources, int>();
+        _minigamesToDo      = new Queue<Missions>();
         _minigames          = GetComponent<MinigameManager>();
         SetInitialResources();
     }
@@ -154,16 +156,13 @@ public class GameManager : MonoBehaviour
             Missions m = _activeMissions[i];
 
             m.PassTurnActive();
+            _minigamesToDo.Enqueue(m);
 
             if (m.TurnsPassedA == m.TurnCost)
             {
                 _activeMissions.Remove(m);
                 _manpower += m.ManpowerReturn;
                 AddResources(m.Reward);
-            }
-            else
-            {
-                _minigames.StartMinigame(m);
             }
         }
         for (int i = 0; i < _currentMissions.Count; i++)
@@ -188,6 +187,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(_prefabDeleteList[i]);
         }
+        _minigames.GamesQueue = _minigamesToDo;
+        _minigames.StartMinigames();
     }
     private void RepostMissions()
     {
