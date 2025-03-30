@@ -17,11 +17,53 @@ MonoBehaviour:
   Rewards: 010000000200000003000000
   Minigame: {fileID: 0}
   Texts:
-  - a
-  - aa
-  - aaa
-  - aaaaa
-  - aaaaaa
+  - "You probably do not know me at all or have only heard briefly about me, but
+    I\u2019m Adrien, the one responsible for the reports of the resources and medical
+    sectors. I\u2019ll be giving the reports for all the resources and medical related
+    missions from here on out. I hope we can get along and that your time with us
+    is\u2026 Well, I can\u2019t say pleasurable, but at least manageable and, hopefully,
+    successful. I\u2019m counting on you, manager.\r\n\r\nThere\u2019s a school that
+    needs to be built in F26, please forward the following resources to our location.\r\nMy
+    best regards,\r\nAdrien"
+  - 'I hope this letter finds you swiftly. There was a deadly flood at site R13.
+    We desperately need these resources as soon as possible, or we can lose an important
+    base and that would make our movements much slower, which could mean a lot more
+    people without support. Please do what you can, manager.
+
+    
+
+    My best
+    regards,
+
+    Adrien'
+  - "I hope this letter finds you well. We\u2019re in dire need of these supplies
+    in U16 due to an unexpected landslide that buried some houses under rubble. Please
+    deliver the required resources swiftly, so that these people can have their place
+    to stay long-term and continue living their lives.\n\r\nMy best regards,\r\nAdrien"
+  - 'A bridge on site E54 collapsed due to heavy rain, so we need these supplies
+    to rebuild and resume safe passage from the village in E53 and the river in E55.
+    Please deliver these before the location''s water supply runs out, the team will
+    be waiting.
+
+    
+
+    My best regards,
+
+    Adrien'
+  - "I hope your time in the team hasn\u2019t been too stressful so far. I know how
+    it can be\u2026 my wife was in your position for a decade, you know, but after
+    a year she had to be discharged due to mental health problems, the stress and
+    too much, and it still affects her today. She doesn\u2019t like that I\u2019m
+    still an active field agent, but I think this is my true purpose, begging here,
+    around people, helping\u2026 sometimes I wish I didn\u2019t feel like this so
+    strongly. My daughter resents me, she resents me for not being there for her,
+    and she makes that clear whenever she responds to my letters (which is barely),
+    but I don\u2019t blame her, I understand, I really do, but\u2026 I can\u2019t
+    ignore what I feel I was born to do! She\u2019s young, maybe one day, when she
+    is older, she will understand, and maybe, just maybe, she will be proud of having
+    me as a father. When she was young, she used to say I was just like a superhero
+    heh\u2026 I miss her, I miss my home, I miss my wife, I\u2019ll think about that
+    honor dispatch the commander sent me a few weeks ago.\n\n"
   - aaaaaaaaaaaaaa
   - aaaaaaaaaaaaaaaaaaa
   - aaaaaaaaaaaaaaaaaaaaaaaaaa

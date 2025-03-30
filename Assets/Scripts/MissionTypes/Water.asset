@@ -17,8 +17,19 @@ MonoBehaviour:
   Rewards: 000000000200000003000000
   Minigame: {fileID: 0}
   Texts:
-  - a
-  - aa
+  - "Honorable manager, I\u2019m pleased to meet you. I\u2019m Elise, responsible
+    for the food and water reports. Even though we probably won\u2019t be meeting
+    each other formally, I hope we can work together remotely, and I pray for our
+    success in these treacherous times.\r\nThe well of the village on site U18 has
+    been completely blocked off after a sandstorm and thus I kindly ask for you to
+    deliver the required supplies to the location with swiftness.\r\nRespectfully
+    submitted,\r\nElise"
+  - "Honorable manager, there was an attack on site V12, more specifically on their
+    main water supply. The base has the resources to undo the damage, but it will
+    take a while, and they do not have enough water for themselves to survive the
+    rebuilding process without help. I ask you to be quick.\r\nAs a former member
+    of an armed force, I always frowned upon initiatives of this kind. May god forgive
+    them. \r\nRespectfully submitted,\r\nElise"
   - aaa
   - aaaaa
   - aaaaaa
