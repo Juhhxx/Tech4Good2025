@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Missions
 {
-    public Missions(string name, int manpwrReq, ResourceAmount cost, ResourceAmount reward, int turnCost, int turnDuration)
+    public Missions(string name, int manpwrReq, ResourceAmount cost, ResourceAmount reward, int turnCost, int turnDuration, string text)
     {
         _name           = name;
         _manpowerReq    = manpwrReq;
@@ -13,6 +13,7 @@ public class Missions
         _reward         = reward;
         _turnCost       = turnCost;
         _turnDuration   = turnDuration;
+        _text          = text;
     }
     private string _name;
     public string Name => _name;
@@ -36,6 +37,8 @@ public class Missions
     // private UnityEvent _startMinigame;
     public void PassTurnWaiting() => _turnsPassedWaiting++;
     public void PassTurnActive() => _turnsPassedActive++;
+    private string _text;
+    public string Text => _text;
     
     public override string ToString()
     {

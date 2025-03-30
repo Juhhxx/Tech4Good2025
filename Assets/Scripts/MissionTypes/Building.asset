@@ -15,3 +15,15 @@ MonoBehaviour:
   Name: Building
   Cost: 00000000
   Rewards: 010000000200000003000000
+  Minigame: {fileID: 0}
+  Texts:
+  - a
+  - aa
+  - aaa
+  - aaaaa
+  - aaaaaa
+  - aaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

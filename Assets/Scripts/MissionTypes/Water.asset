@@ -15,3 +15,15 @@ MonoBehaviour:
   Name: Water
   Cost: 01000000
   Rewards: 000000000200000003000000
+  Minigame: {fileID: 0}
+  Texts:
+  - a
+  - aa
+  - aaa
+  - aaaaa
+  - aaaaaa
+  - aaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

@@ -10,6 +10,7 @@ public class MissionType : ScriptableObject
     public List<Resources> Cost;
     public List<Resources> Rewards;
     public GameObject Minigame;
+    [TextArea] public string[] Texts;
 
     public Missions InstantiateMissions(int currentTurn)
     {
@@ -29,7 +30,9 @@ public class MissionType : ScriptableObject
         int turnCost = 1 + (int)Mathf.Ceil(manpowerReq / 10);
 
         int turnDuration = Random.Range( 1, 5);
+
+        string text = Texts[missionLevel];
         
-        return new Missions( Name, manpowerReq, resourceCost, resourceReward, turnCost, turnDuration);
+        return new Missions( Name, manpowerReq, resourceCost, resourceReward, turnCost, turnDuration, text);
     }
 }

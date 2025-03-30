@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private List<Missions> _activeMissions;
     public int ActiveMissions => _activeMissions.Count;
     private List<GameObject> _prefabDeleteList;
+    
 
     private void Start()
     {
@@ -94,7 +95,9 @@ public class GameManager : MonoBehaviour
         Button btt          = newM.GetComponent<Button>();
         Image bttImg        = newM.GetComponent<Image>();
         TextMeshProUGUI tmp = newM.GetComponentInChildren<TextMeshProUGUI>();
+        HoverText hv        = newM.GetComponent<HoverText>();
 
+        hv.Mission = m;
         btt.onClick.AddListener(() => AcceptMission(m,bttImg,btt));
         tmp.text = m.ToString();
     }

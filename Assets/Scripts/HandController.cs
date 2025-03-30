@@ -19,9 +19,9 @@ public class HandController : MonoBehaviour
     {
         spriteRenderer = GetComponent<Image>(); // Get the sprite renderer
         if (centerPoint == null)
-    {
-        centerPoint = GameObject.Find("CenterPoint").transform;
-    }
+        {
+            centerPoint = GameObject.Find("CenterPoint").transform;
+        }
         spawnPoint = transform.position; // Save spawn position
         Vector3 direction = (centerPoint.position - spawnPoint).normalized; 
         targetPosition = centerPoint.position - direction * (maxDistance * 0.5f);
@@ -79,5 +79,9 @@ public class HandController : MonoBehaviour
         {
             spriteRenderer.sprite = newSprite;
         }
+    }
+    private void FinalReport()
+    {
+        
     }
 }
