@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
         InstantiateMissionPrefab(mission);
 
-        Debug.Log(mission.ToString());
+        // Debug.Log(mission.ToString());
 
         return mission;
     }
@@ -95,12 +95,12 @@ public class GameManager : MonoBehaviour
         Image bttImg        = newM.GetComponent<Image>();
         TextMeshProUGUI tmp = newM.GetComponentInChildren<TextMeshProUGUI>();
 
-        btt.onClick.AddListener(() => AcceptMission(m,bttImg));
+        btt.onClick.AddListener(() => AcceptMission(m,bttImg,btt));
         tmp.text = m.ToString();
     }
-    public void AcceptMission(Missions mission, Image bttImage)
+    public void AcceptMission(Missions mission, Image bttImage, Button btt)
     {
-        if (_resources[(Resources)mission.Cost["resource"]] > (int)mission.Cost["amount"])
+        if (_resources[(Resources)mission.Cost["resource"]] > (int)mission.Cost["amount"] && _manpower > mission.ManpowerReq)
         {
             _currentMissions.Remove(mission);
             _activeMissions.Add(mission);
@@ -112,6 +112,10 @@ public class GameManager : MonoBehaviour
             bttImage.color = new Color( 1, 1, 1, 0.5f);
             _prefabDeleteList.Add(bttImage.gameObject);
         }
+        else
+        {
+            // btt.
+        }
     }
     private void CheckMissions()
     {
@@ -119,9 +123,9 @@ public class GameManager : MonoBehaviour
         {
             Missions m = _activeMissions[i];
 
-            m.PassTurn();
+            m.PassTurnActive();
 
-            if (m.TurnsPassed == m.TurnCost)
+            if (m.TurnsPassedA == m.TurnCost)
             {
                 _activeMissions.Remove(m);
                 _manpower += m.ManpowerReturn;
@@ -132,13 +136,18 @@ public class GameManager : MonoBehaviour
         {
             Missions m = _currentMissions[i];
 
-            m.PassTurn();
+            m.PassTurnWaiting();
 
-            if (m.TurnsPassed == m.TurnDuration)
+            if (m.TurnsPassedW == m.TurnDuration)
             {
                 _currentMissions.Remove(m);
                 // Debug.Log(idx);
                 Destroy(_missionLayoutGroup.transform.GetChild(i).gameObject);
+            }
+            else
+            {
+                TextMeshProUGUI tmp = _missionLayoutGroup.transform.GetChild(i).gameObject.GetComponentInChildren<TextMeshProUGUI>();
+                tmp.text = m.ToString();
             }
         }
         for (int i = 0; i < _prefabDeleteList.Count; i++)

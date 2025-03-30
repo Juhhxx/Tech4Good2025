@@ -28,14 +28,15 @@ public class Missions
     public int TurnCost => _turnCost;
     private int _turnDuration;
     public int TurnDuration => _turnDuration;
-    private float _missionSuccess;
-    private int _turnsPassed;
-    public int TurnsPassed => _turnsPassed;
+    private float _missionSuccess = 1;
+    private int _turnsPassedWaiting;
+    public int TurnsPassedW => _turnsPassedWaiting;
+    private int _turnsPassedActive;
+    public int TurnsPassedA => _turnsPassedActive;
     // private UnityEvent _startMinigame;
-    public void PassTurn()
-    {
-        _turnsPassed++;
-    }
+    public void PassTurnWaiting() => _turnsPassedWaiting++;
+    public void PassTurnActive() => _turnsPassedActive++;
+    
     public override string ToString()
     {
         return string.Format(
@@ -43,7 +44,7 @@ public class Missions
         _name, _manpowerReq, 
         _cost["amount"], _cost["resource"].ToString(),
         _reward["amount"], _reward["resource"].ToString(),
-        _turnCost, _turnDuration
+        _turnCost, _turnDuration - _turnsPassedWaiting
         );
     }
 }
