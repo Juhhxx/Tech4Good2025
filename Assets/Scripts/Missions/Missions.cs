@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Missions
 {
@@ -17,22 +18,28 @@ public class Missions
     public string Name => _name;
     private int _manpowerReq;
     public int ManpowerReq => _manpowerReq;
+    public int ManpowerReturn => (int)(_manpowerReq * _missionSuccess);
     private ResourceAmount _cost;
     public ResourceAmount Cost => _cost;
     private ResourceAmount _reward;
-    private ResourceAmount Reward => new ResourceAmount((MissionResources)_reward["resource"], 
+    public ResourceAmount Reward => new ResourceAmount((Resources)_reward["resource"], 
                                                         (int)((int)_reward["amount"] * _missionSuccess));
     private int _turnCost;
     public int TurnCost => _turnCost;
     private int _turnDuration;
     public int TurnDuration => _turnDuration;
     private float _missionSuccess;
-    // public Event 
-
+    private int _turnsPassed;
+    public int TurnsPassed => _turnsPassed;
+    // private UnityEvent _startMinigame;
+    public void PassTurn()
+    {
+        _turnsPassed++;
+    }
     public override string ToString()
     {
         return string.Format(
-        "{0}\nManpower Required:\n{1}\nCost:\n{2} {3}/s\nRewards:\n{4} {5}/s\nDuration:\n{6} days\nTime Available:\n{7} days",
+        "{0}\nManpower: {1}\nCost: {2} {3}/s\nRewards: {4} {5}/s\nDuration: {6} days\nTime Available: {7} days",
         _name, _manpowerReq, 
         _cost["amount"], _cost["resource"].ToString(),
         _reward["amount"], _reward["resource"].ToString(),

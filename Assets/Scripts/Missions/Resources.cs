@@ -1,5 +1,5 @@
 
-public enum MissionResources
+public enum Resources
 {
     Building,
     Water,

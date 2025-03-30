@@ -1,22 +1,24 @@
 using UnityEngine;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "MissionType", menuName = "Scriptable Objects/MissionType")]
 public class MissionType : ScriptableObject
 {
     public string Name;
-    public List<MissionResources> Cost;
-    public List<MissionResources> Rewards;
+    public List<Resources> Cost;
+    public List<Resources> Rewards;
+    public GameObject Minigame;
 
     public Missions InstantiateMissions(int currentTurn)
     {
         int missionLevel = currentTurn;
         
-        MissionResources cost = Cost.RandomElement();
-        MissionResources reward = Rewards.RandomElement();
+        Resources cost = Cost.RandomElement();
+        Resources reward = Rewards.RandomElement();
 
-        int costAmount      = Random.Range( 1, 11 + missionLevel) * 5;
+        int costAmount      = Random.Range( 1, 6 + missionLevel) * 5;
         int rewardAmount    = Random.Range( 1, 1 + (costAmount / 5)) * 5;
 
         ResourceAmount resourceCost     = new ResourceAmount( cost, costAmount);
@@ -26,7 +28,7 @@ public class MissionType : ScriptableObject
 
         int turnCost = 1 + (int)Mathf.Ceil(manpowerReq / 10);
 
-        int turnDuration = Random.Range( 1, 3);
+        int turnDuration = Random.Range( 1, 5);
         
         return new Missions( Name, manpowerReq, resourceCost, resourceReward, turnCost, turnDuration);
     }
