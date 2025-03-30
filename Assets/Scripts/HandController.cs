@@ -12,7 +12,7 @@ public class HandController : MonoBehaviour
     private Vector3 spawnPoint;
     private Vector3 targetPosition;
     private bool returning = false;
-    public Sprite newSprite; // Assign this in the Inspector
+    public Material newSprite; // Assign this in the Inspector
     private Image spriteRenderer;
 
     void Start()
@@ -77,7 +77,7 @@ public class HandController : MonoBehaviour
     {
         if (newSprite != null)
         {
-            spriteRenderer.sprite = newSprite;
+            spriteRenderer.material = newSprite;
         }
     }
     private void FinalReport()
