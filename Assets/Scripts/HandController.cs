@@ -78,6 +78,8 @@ public class HandController : MonoBehaviour
         if (newSprite != null)
         {
             spriteRenderer.material = newSprite;
+            // Add point
+            
         }
     }
     private void FinalReport()

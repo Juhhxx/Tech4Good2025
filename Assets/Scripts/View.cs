@@ -4,7 +4,11 @@ using UnityEngine.Rendering;
 
 public class View : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _tmp;
+    [SerializeField] private TextMeshProUGUI _tmpManpwr;
+    [SerializeField] private TextMeshProUGUI _tmpBuilding;
+    [SerializeField] private TextMeshProUGUI _tmpWater;
+    [SerializeField] private TextMeshProUGUI _tmpFood;
+    [SerializeField] private TextMeshProUGUI _tmpMedicine;
     [SerializeField] private GameManager _gameManager;
 
     private void Update()
@@ -13,13 +17,10 @@ public class View : MonoBehaviour
     }
     private void UpdateUI()
     {
-        _tmp.text = string.Format("Day {0}\n\nManpower : {1}/100\nBuilding Materials : {2}\nWater : {3}\nFood : {4}\nMedicine : {5}\n\nActive Tasks : {6}",
-        _gameManager.Turn, 
-        _gameManager.Manpower, 
-        _gameManager.Resources[Resources.Building],
-        _gameManager.Resources[Resources.Water],
-        _gameManager.Resources[Resources.Food],
-        _gameManager.Resources[Resources.Medicine],
-        _gameManager.ActiveMissions);
+        _tmpManpwr.text = _gameManager.Manpower.ToString();
+        _tmpBuilding.text = _gameManager.Resources[Resources.Building].ToString();
+        _tmpWater.text = _gameManager.Resources[Resources.Water].ToString();
+        _tmpFood.text = _gameManager.Resources[Resources.Food].ToString();
+        _tmpMedicine.text = _gameManager.Resources[Resources.Medicine].ToString();
     }
 }

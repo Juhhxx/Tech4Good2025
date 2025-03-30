@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using NaughtyAttributes;
 using TMPro;
-using Mono.Cecil;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _missionsUI;
     [SerializeField] private int _turn;
     public int Turn => _turn;
     [SerializeField] private List<ResourceAmount> _initialResources;
@@ -22,7 +22,12 @@ public class GameManager : MonoBehaviour
     private List<Missions> _activeMissions;
     public int ActiveMissions => _activeMissions.Count;
     private List<GameObject> _prefabDeleteList;
-    
+    private List<Resources> _allResources = new List<Resources>() {global :: Resources.Building, 
+                                                                global :: Resources.Food,
+                                                                global :: Resources.Medicine,
+                                                                global :: Resources.Water};
+    private MinigameManager _minigames;
+    private bool _inTurn = false;
 
     private void Start()
     {
@@ -31,22 +36,32 @@ public class GameManager : MonoBehaviour
         _activeMissions     = new List<Missions>();
         _prefabDeleteList   = new List<GameObject>();
         _resources          = new Dictionary<Resources, int>();
+        _minigames          = GetComponent<MinigameManager>();
         SetInitialResources();
-        StartTurn();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !_inTurn && !_minigames.IsPLaying)
+        {
+            CameraSwitch.SwitchToCamera(CameraModes.Missions);
+            _missionsUI.SetActive(true);
+            StartTurn();
+        }
     }
 
     // Turn Control
     private void StartTurn()
     {
+        _inTurn = true;
         _turn++;
         RepostMissions();
-
-        // Do minigames
     }
     public void EndTurn()
     {
         CheckMissions();
-        StartTurn();
+        GetRandomResource();
+        _missionsUI.SetActive(false);
+        _inTurn = false;
     }
 
     // Resources
@@ -65,11 +80,23 @@ public class GameManager : MonoBehaviour
         if (!_resources.ContainsKey((Resources)ra["resource"]))
             _resources.Add((Resources)ra["resource"], (int)ra["amount"]);
         else
+        {
             _resources[(Resources)ra["resource"]] += (int)ra["amount"];
+
+            if (_resources[(Resources)ra["resource"]] > 100)
+                _resources[(Resources)ra["resource"]] = 100;
+        }
     }
     private void RemoveResources(ResourceAmount ra)
     {
         _resources[(Resources)ra["resource"]] -= (int)ra["amount"];
+    }
+    private void GetRandomResource()
+    {
+        Resources r = _allResources.RandomElement();
+        int a = Random.Range(1,6) * 5;
+
+        AddResources(new ResourceAmount(r, a));
     }
     
     // Missions
@@ -133,6 +160,10 @@ public class GameManager : MonoBehaviour
                 _activeMissions.Remove(m);
                 _manpower += m.ManpowerReturn;
                 AddResources(m.Reward);
+            }
+            else
+            {
+                _minigames.StartMinigame(m);
             }
         }
         for (int i = 0; i < _currentMissions.Count; i++)

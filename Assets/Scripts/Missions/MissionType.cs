@@ -9,7 +9,6 @@ public class MissionType : ScriptableObject
     public string Name;
     public List<Resources> Cost;
     public List<Resources> Rewards;
-    public GameObject Minigame;
     [TextArea] public string[] Texts;
 
     public Missions InstantiateMissions(int currentTurn)
@@ -33,6 +32,6 @@ public class MissionType : ScriptableObject
 
         string text = Texts[missionLevel - 1];
         
-        return new Missions( Name, manpowerReq, resourceCost, resourceReward, turnCost, turnDuration, text);
+        return new Missions( Name, manpowerReq, resourceCost, resourceReward, turnCost, turnDuration, text, GameObject.Find($"{Name}Minigame"));
     }
 }
