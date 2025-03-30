@@ -19,6 +19,15 @@ public class Water : MonoBehaviour
         Vector3 curPos = _rectTrans.anchoredPosition;
         curPos.y -= _fallingSpeed;
         _rectTrans.anchoredPosition = curPos;
+
+        if (curPos.y <= -0.46f)
+            Destroy(gameObject);
+    }
+    public void CollectWater()
+    {
+        Debug.Log("AAAA");
+        Destroy(gameObject);
+        //Add points
     }
 
 }
