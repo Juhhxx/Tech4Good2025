@@ -4,7 +4,6 @@ using UnityEngine;
 public class UI_Spawner : MonoBehaviour
 {
     public GameObject objectToSpawn;  // The UI element prefab
-    public RectTransform centerPoint; // The UI center they should face
     public RectTransform[] spawnPoints; // UI spawn positions
 
     public float initialSpawnRate = 2f;  // Start time between spawns
@@ -33,29 +32,19 @@ public class UI_Spawner : MonoBehaviour
 
     private void SpawnObject()
     {
-        if (spawnPoints.Length == 0 || objectToSpawn == null || centerPoint == null) return;
+        if (spawnPoints.Length == 0 || objectToSpawn == null) return;
 
         // Pick a random spawn point
         RectTransform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Instantiate the object inside the Canvas
-        GameObject spawned = Instantiate(objectToSpawn, spawnPoint.position, Quaternion.identity, spawnPoint.parent);
+        GameObject spawned = Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation, spawnPoint.parent);
 
         // Get RectTransform
         RectTransform spawnedRect = spawned.GetComponent<RectTransform>();
 
-        // Set position to match the spawn point
+        // Set position and rotation to match the spawn point
         spawnedRect.anchoredPosition = spawnPoint.anchoredPosition;
-
-        // Convert UI positions to world space for LookAt() to work
-        Vector3 worldSpawnPos = spawnedRect.position;
-        Vector3 worldCenterPos = centerPoint.position;
-
-        // Make it look at the center using LookAt()
-        spawned.transform.LookAt(worldCenterPos);
-
-        // Adjust rotation to only rotate on the Z axis for UI
-        Vector3 eulerRotation = spawned.transform.eulerAngles;
-        spawned.transform.rotation = Quaternion.Euler(0, 0, eulerRotation.y);
+        spawnedRect.rotation = spawnPoint.rotation; // Inherit rotation
     }
 }
