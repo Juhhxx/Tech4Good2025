@@ -2664,7 +2664,7 @@ Transform:
   m_GameObject: {fileID: 791180448}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6827159, z: -0, w: 0.730684}
-  m_LocalPosition: {x: 0.95757335, y: 3.3125637, z: 0.23342475}
+  m_LocalPosition: {x: 0.52, y: 3.3125637, z: 0.63}
   m_LocalScale: {x: 1.4679021, y: 1.4679022, z: 1.4679021}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2683,8 +2683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSource: {fileID: 791180452}
-  minIntensity: 6000
-  maxIntensity: 10000
+  minIntensity: 10000
+  maxIntensity: 20000
   flickerSpeed: 4
   useRandomness: 1
 --- !u!114 &791180451
@@ -2721,7 +2721,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.32941177, g: 0.1575331, b: 0, a: 1}
-  m_Intensity: 10000
+  m_Intensity: 20000
   m_Range: 37.43152
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
